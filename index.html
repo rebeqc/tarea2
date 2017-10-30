@@ -68,31 +68,31 @@
       poblacion.addTo(mapa);   
 	    
 	    
-      //function infoRiqueza(feature, layer) {
-	//var popupContent = "Riqueza de especies: ";
-	//if (feature.properties && feature.properties.spprichnes) {
-	 // popupContent += feature.properties.spprichnes;
-	//} else {
-	//  popupContent += 0; 
-	//}
-	//layer.bindPopup(popupContent);
-    //  }	    	    
+      function infoRiqueza(feature, layer) {
+	var popupContent = "Riqueza de especies: ";
+	if (feature.properties && feature.properties.spprichnes) {
+	  popupContent += feature.properties.spprichnes;
+	} else {
+	  popupContent += 0; 
+	}
+	layer.bindPopup(popupContent);
+      }	    	    
 	    
-      //var riqueza = L.geoJson(riqespecies, {
-       // style: function (feature) {
-	//  return {
-	 //   weight: 2,
-	  //  opacity: 1,
-	  //  color: 'white',
-	  //  dashArray: '3',
-	   // fillOpacity: 0.7,		  
-            //fillColor: color(feature.properties.spprichnes)
-        //  };
-      //  },
+      var riqueza = L.geoJson(riqespecies, {
+        style: function (feature) {
+	  return {
+	    weight: 2,
+	    opacity: 1,
+	    color: 'white',
+	    dashArray: '3',
+	    fillOpacity: 0.7,		  
+            fillColor: color(feature.properties.spprichnes)
+          };
+        },
 	      
-	//onEachFeature: infoRiqueza
-    //  })
-     // riqueza.addTo(mapa);
+	onEachFeature: infoRiqueza
+      })
+      riqueza.addTo(mapa);
 	    
 	    
       function infoPresencia(feature, layer) {
