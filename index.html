@@ -26,7 +26,7 @@
     <script src="js/Cantones2014wgs84.js"  type="text/javascript"></script>
 
     <script>
-      var mapa = L.map('map').setView([9.7, -84], 8);
+      var mapa = L.map('map').setView([9.6, -84], 8);
       var osm  = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
       });
@@ -43,8 +43,15 @@
 		        '#fcbba1';
       }	    
       
-	    
-	    
+      function infoPoblacion(feature, layer) {
+	var popupContent = "Densidad poblacional: ";
+	if (feature.properties && feature.properties.POB_2011_T) {
+	  popupContent += feature.properties.POB_2011_T;
+	} else {
+	  popupContent += 0; 
+	}
+	layer.bindPopup(popupContent);
+      }	    
 	    
 	    
 	    
