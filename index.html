@@ -39,35 +39,8 @@
 	       d > 170000 ? '#a50f15' :
 	       d > 110000 ? '#cb181d' :
 	       d > 57000 ? '#ef3b2c' :
-	                   '#fcbba1';
+	        		        '#fcbba1';
       }	    
-      function infoPoblacion(feature, layer) {
-	var popupContent = "Densidad polacional: ";
-	if (feature.properties && feature.properties.POB_2011_T) {
-	  popupContent += feature.properties.POB_2011_T;
-	} else {
-	  popupContent += 0; 
-	}
-	layer.bindPopup(popupContent);
-      }	    	    
-	    
-      var poblacion = L.geoJson(poblacion, {
-        style: function (feature) {
-	  return {
-	    weight: 2,
-	    opacity: 1,
-	    color: 'red',
-	    dashArray: '3',
-	    fillOpacity: 0.7,		  
-            fillColor: color(feature.properties.POB_2011_T)
-          };
-        },
-	      
-	onEachFeature: infoPoblacion
-      })
-      poblacion.addTo(mapa);   
-	    
-	    
       function infoRiqueza(feature, layer) {
 	var popupContent = "Riqueza de especies: ";
 	if (feature.properties && feature.properties.spprichnes) {
@@ -101,7 +74,7 @@
 	  popupContent += feature.properties.scientif_1;
 	}
 	layer.bindPopup(popupContent);
-      },	    
+      }	    
 	    
 	    
       registrosPresencia = L.geoJson(regpresencia, {
@@ -132,8 +105,7 @@
       };
       var overlays = {
 	"Riqueza de especies": riqueza,
-	"Registros de presencia": registrosPresencia,
-	"Densidad poblacional": poblacion
+	"Registros de presencia": registrosPresencia
       };
       L.control.layers(baseLayers, overlays).addTo(mapa);
 	    
